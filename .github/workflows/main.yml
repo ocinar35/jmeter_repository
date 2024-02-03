@@ -7,7 +7,7 @@ on:
 
 jobs:
   jmeter_test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout Repository
@@ -21,6 +21,4 @@ jobs:
 
       - name: Run JMeter Tests
         run: |
-          "C:\Users\ocina\OneDrive\Masaüstü\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\jmeter" -n -t "C:\Users\ocina\OneDrive\Masaüstü\View Results Tree.jmx" -l results.jtl
-            
-          
+          & "C:\Users\ocina\OneDrive\Masaüstü\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\jmeter.bat" -n -t "C:\Users\ocina\OneDrive\Masaüstü\View Results Tree.jmx" -l results.jtl
