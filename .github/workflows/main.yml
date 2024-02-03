@@ -7,6 +7,19 @@ on:
     branches: [main]
 
   workflow_dispatch:
+    inputs:
+      virtual_user:
+        required: true
+        description: Enter virtual user count
+        default: '5'
+      ramp_up_time:
+        required: true
+        description: Enter ramp up time
+        default: '1'
+      loop_count:
+        required: true
+        description: Enter loop count
+        default: '1'
 
 jobs:
   run_jmeter_test:
@@ -17,5 +30,11 @@ jobs:
           uses: rbhadti94/apache-jmeter-action@v0.5.0
           with:
             testFilePath: viewResultsTree.jmx
-          
+            outputReportsFolder: reports/
+            args: "-Juser_count=${{ github.action.input.virtual_user }} -Jramp_up_time=${{ github.action.input.ramp_up_time }} -Jloop_count=${{ github.action.input.loop_count }}"
+
+        - uses: actions/upload-artifact@3.1.2
+           with:
+           name: jmeter-test-results
+           path: reports/
       
