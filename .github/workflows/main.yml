@@ -22,7 +22,7 @@
               uses: QAInsights/PerfAction@v5.6.2
               with:
              # JMeter test plan to execute
-               test-plan-path: ".\Simple Ex.jmx"
+               test-plan-path: ".\View Results Tree.jmx"
    
             - name: Upload Results
               uses: actions/upload-artifact@v3
