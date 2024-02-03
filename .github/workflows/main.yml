@@ -16,6 +16,6 @@ jobs:
         - name: run jmeter on github action
           uses: rbhadti94/apache-jmeter-action@v0.5.0
           with:
-            testFilePath: View resultsTree.jmx
+            testFilePath: viewResultsTree.jmx
           
       
