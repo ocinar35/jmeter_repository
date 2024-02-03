@@ -21,9 +21,7 @@ jobs:
 
       - name: Run JMeter Test
         run: |
-          wget https://downloads.apache.org/jmeter/binaries/apache-jmeter-5.4.3.tgz
-          tar -xf apache-jmeter-5.4.3.tgz
-          ./apache-jmeter-5.4.3/bin/jmeter -n -t "C:\Users\ocina\OneDrive\Masaüstü\SimpleEx.jmx" -l test-results.jtl
+          java -jar "C:\Users\ocina\OneDrive\Masaüstü\apache-jmeter-5.4.1\bin\ApacheJMeter.jar" -n -t "C:\Users\ocina\OneDrive\Masaüstü\SimpleEx.jmx" -l test-results.jtl
 
       - name: Upload Test Results
         uses: actions/upload-artifact@v2
