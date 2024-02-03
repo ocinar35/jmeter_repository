@@ -1,0 +1,34 @@
+   name: CI
+
+   on:
+     push:
+       branchs: [main]
+     pull_request:
+       branchs: [main]
+
+     workflow_dispatch:
+
+   jobs:
+
+    build:
+
+      runs-on: ubuntu-latest
+
+        steps:
+          -uses: actions/checkout@v2
+  
+          -name:
+   
+           uses: QAInsights/PerfAction@v5.6.2
+           with:
+          # JMeter test plan to execute
+            test-plan-path: 'C:\Users\ocina\OneDrive\Masaüstü\View Results Tree.jmx'
+
+         - name: Upload Results
+           uses: actions/upload-artifact@v3
+           with:
+              name: jmeter-results
+              path: result.jtl
+              
+            
+          
