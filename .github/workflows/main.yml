@@ -9,13 +9,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  run_jmeter_test:
     runs-on: ubuntu-latest
-
     steps:
         - uses: actions/checkout@v3
         - name: run jmeter on github action
- 
-          uses: sebiboga/run-jmeter-github-action@v0.0.5
+          uses: rbhadti94/apache-jmeter-action@v0.5.0
+          with:
+            testFilePath: View resultsTree.jmx
           
       
