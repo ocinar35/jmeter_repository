@@ -1,32 +1,21 @@
-name: JMeter Test
+name: JMeter Tests
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
-  run_jmeter:
+  run-jmeter-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Setup Java
-        uses: actions/setup-java@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
         with:
-          distribution: 'adopt'
-          java-version: '11'
-
-      - name: Run JMeter Test
-        run: |
-          wget https://downloads.apache.org/jmeter/binaries/apache-jmeter-5.4.1.tgz
-          tar -xf apache-jmeter-5.4.1.tgz
-          ./apache-jmeter-5.4.1/bin/jmeter -n -t 'C:\Users\ocina\OneDrive\Masaüstü\ViewResultsTree.jmx' -l test-results.jtl
-
-      - name: Upload Test Results
-        uses: actions/upload-artifact@v2
+          distribution: 'temurin'
+          java-version: '8'
+      - uses: actions/download-artifact@v3
         with:
-          name: jmeter-results
-          path: test-results.jtl
+          name: jmeter
+          path: C:\Users\ocina\OneDrive\Masaüstü\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\ApacheJMeter.jar
+      - uses: apache/jmeter@v1
+        with:
+          testFilePath: 'C:\Users\ocina\OneDrive\Masaüstü\SimpleEx.jmx'
