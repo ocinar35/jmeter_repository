@@ -21,6 +21,6 @@ jobs:
 
       - name: Run JMeter Tests
         run: |
-          java -jar "C:\Users\ocina\OneDrive\Masaüstü\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\ApacheJMeter.jar" -n -t "C:\Users\ocina\OneDrive\Masaüstü\View Results Tree.jmx" -l results.jtl
+          "C:\Users\ocina\OneDrive\Masaüstü\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\jmeter" -n -t "C:\Users\ocina\OneDrive\Masaüstü\View Results Tree.jmx" -l results.jtl
             
           
