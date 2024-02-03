@@ -1,34 +1,27 @@
-   name: CI
+name: Run JMeter Tests
 
-   on:
-     push:
-       branchs: [main]
-     pull_request:
-       branchs: [main]
+on:
+  push:
+    branches:
+      - main
 
-     workflow_dispatch:
+jobs:
+  jmeter_test:
+    runs-on: ubuntu-latest
 
-      jobs:
-   
-       build:
-   
-         runs-on: ubuntu-latest
-   
-           steps:
-             -uses: actions/checkout@v2
-     
-             -name: PerfAction Jemeter
-      
-              uses: QAInsights/PerfAction@v5.6.2
-              with:
-             # JMeter test plan to execute
-               test-plan-path: ".\View Results Tree.jmx"
-   
-            - name: Upload Results
-              uses: actions/upload-artifact@v3
-              with:
-                 name: jmeter-results
-                 path: result.jtl
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set Up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+
+      - name: Run JMeter Tests
+        run: |
+          .C:\Users\ocina\OneDrive\Masaüstü\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\ApacheJMeter.jar -n -t C:\Users\ocina\OneDrive\Masaüstü\View Results Tree.jmx -l results.jtl
               
             
           
