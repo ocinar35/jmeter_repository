@@ -1,41 +1,31 @@
-name: JMeter Test
+name: JMeter Load Test
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
-
-  workflow_dispatch:
-    inputs:
-      virtual_user:
-        required: true
-        description: Enter virtual user count
-        default: '5'
-      ramp_up_time:
-        required: true
-        description: Enter ramp up time
-        default: '1'
-      loop_count:
-        required: true
-        description: Enter loop count
-        default: '1'
+    branches: [ main ]
 
 jobs:
-  run_jmeter_test:
+  build:
     runs-on: ubuntu-latest
-    steps:
-        - uses: actions/checkout@v3
-        - name: run jmeter on github action
-          uses: rbhadti94/apache-jmeter-action@v0.5.0
-          with:
-            testFilePath: userNamePassword.jmx
-            # outputReportsFolder: reports/
-            args: "-Juser_count=${{ github.action.input.virtual_user }} -Jramp_up_time=${{ github.action.input.ramp_up_time }} -Jloop_count=${{ github.action.input.loop_count }}"
 
-        - name: Upload Results
-          uses: actions/upload-artifact@v4
-          with:
-              name: jmeter-test-results
-              path: result.csv
-      
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Java
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+
+    - name: Run JMeter tests
+      run: |
+        mkdir -p results
+        ./apache-jmeter-5.4.1/bin/jmeter -n -t userNamePassword.jmx -l results/testresults.jtl -e -o results/dashboard
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-results
+        path: results
