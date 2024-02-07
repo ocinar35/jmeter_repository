@@ -1,0 +1,65 @@
+{
+    "orderId": "Perf6",
+    "ref1": "1234ABCDEFGH",    
+    "pickupLocationCode": "wh4",
+    "createShipment": "true",
+    "deliveryOptionId": 564,
+    "payment_method": "COD",
+    "amount": 100,
+    "amount_due": 50,
+    "currency": "SAR",
+    "customsValue":"12",
+    "customsCurrency":"USD",
+    "packageCount": 2,
+    "packageWeight": 1,
+    "boxWidth": 10,
+    "boxLength": 10,
+    "boxHeight": 10,
+    "orderDate": "18/01/2024 16:45",
+    "deliverySlotDate": "18/01/2024",
+    "deliverySlotTo": "12pm",
+    "deliverySlotFrom": "2:30pm",
+    "senderName":"Sender Company",
+    "customer": {
+        "name": "عبدالله الغامدي",
+        "email": "test@test.com",
+        "mobile": "5466",
+        "address": "3354 Prince Fawaz Bin Abdulaziz St, 7929, Ar Rabwah, Riyadh 12813, Saudi Arabia",
+        "district": "Ar Rabwah",
+        "city": "Riyadh",
+        "country": "SA",
+        "postcode": "12345",
+        "lat": "40.706333",
+        "lon": "29.888211"
+    },
+    "items": [
+        {
+            "productId": 112,
+            "name": "test product",
+            "price": 100,
+            "rowTotal": 100,
+            "taxAmount": 15,
+            "quantity": 1,
+            "sku": "test-product",
+            "image": "http://...."
+        },
+        {
+            "name": "test product 2",
+            "productId": 113,
+            "price": 100,
+            "rowTotal": 100,
+            "taxAmount": 15,
+            "quantity": 1,
+            "sku": "test-product-2"
+        },
+        {
+            "name": "test product 3",
+            "price": 100,
+            "productId": 114,
+            "rowTotal": 100,
+            "taxAmount": 15,
+            "quantity": 1,
+            "sku": "test-product-3"
+        }
+    ]
+}
