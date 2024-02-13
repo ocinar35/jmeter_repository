@@ -31,6 +31,6 @@ jobs:
 
       - name: Run JMeter test
         run: |
-          ./jmeter -n -t ./userNamePassword.jmx -e -o ./reports\report1
+          ./ApacheJMeter.jar -n -t ./userNamePassword.jmx -e -o ./reports\report1
 
     
