@@ -29,11 +29,8 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
-      - name: Change directory to JMeter bin
-        run: cd /Users/oguzcinar/Desktop/Cinar/apache-jmeter-5.6.3/bin
-
       - name: Run JMeter test
         run: |
-          ./jmeter -n -t /Users/oguzcinar/Desktop/Cinar/JMeter/userNamePassword.jmx -l /Users/oguzcinar/Desktop/Cinar/JMeter/reports\csvReports\result1.csv -e -o /Users/oguzcinar/Desktop/Cinar/JMeter/reports\htmlReports\report1
+          ./jmeter -n -t ./userNamePassword.jmx -e -o ./reports\report1
 
     
