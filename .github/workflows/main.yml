@@ -1,10 +1,6 @@
 name: JMeter Test
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
 
   workflow_dispatch:
     inputs:
@@ -23,15 +19,20 @@ on:
 
 jobs:
   run_jmeter_test:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v3
+        - uses: actions/checkout@v3
+        - name: run jmeter on github action
+          uses: rbhadti94/apache-jmeter-action@v0.5.0
+          with:
+            testFilePath: userNamePassword.jmx
+            # outputReportsFolder: reports/
+            args: "-Juser_count=${{ github.action.input.virtual_user }} -Jramp_up_time=${{ github.action.input.ramp_up_time }} -Jloop_count=${{ github.action.input.loop_count }}"
 
-      - name: Run JMeter test
-        run: |
-          brew update
-          brew install jmeter
-          ./ApacheJMeter.jar -n -t ./userNamePassword.jmx -e -o ./reports\report1
+        - name: Upload Results
+          uses: actions/upload-artifact@v4
+          with:
+              name: jmeter-test-results
+              path: result.csv
 
     
